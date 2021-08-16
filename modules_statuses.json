@@ -1,0 +1,6 @@
+{
+    "Users": true,
+    "Merchant": true,
+    "SuperAdmin": true,
+    "WareHouseController": true
+}
