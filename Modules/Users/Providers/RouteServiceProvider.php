@@ -2,6 +2,7 @@
 
 namespace Modules\Users\Providers;
 
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -47,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web','auth')
+        Route::middleware('web')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Users', '/Routes/web.php'));
     }

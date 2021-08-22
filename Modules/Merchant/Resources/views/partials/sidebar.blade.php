@@ -36,7 +36,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="{{ route('/users/ware-house') }}" class="nav-link {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
+            <a href="#" class="nav-link {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
                  home
@@ -44,36 +44,48 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-id-card-alt"></i>
-              <p>
-                Contact us
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
-            <i class="nav-icon fas fa-id-card-alt"></i>
-              <p>
+            <a href="{{route('merchant.index')}}" class="nav-link {{ $elementActive ?? '' == 'home' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
                 Dashboard
-              </p>
+            </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('wareHouse.index') }}" class="nav-link  {{ $elementActive ?? '' == 'ware-house' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
-              <p>
-                Dashboard
-              </p>
+            <p>
+                Ware House
+            </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('warehousecategory.index') }}" class="nav-link  {{ $elementActive ?? '' == 'ware-house' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
-              <p>
-                Dashboard
-              </p>
+            <p>
+                Ware House Category
+            </p>
             </a>
+        </li>
+        <li class="nav-header text-uppercase">Customers Request</li>
+        <li class="nav-item">
+            <a class="nav-link {{ $elementActive ?? '' == 'warehouse' ? 'active' : '' }} " href="#">
+                <i class="nav-icon fas fa-home"></i>
+                <p>WareHouse</p>
+              </a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $elementActive ?? '' == 'wareHouseRequest' ? 'active' : '' }}" href="{{ route('warehousecategory.approved') }}">
+            <i class="nav-icon far fa-circle"></i> <p>Approved</p>
+          </a>
+          </li>
+        <li class="nav-item"><a class="nav-link {{ $elementActive ?? '' == 'wareHouseRequestCreate' ? 'active' : '' }}" href="{{ route('warehousecategory.pending') }}">
+            <i class="nav-icon far fa-circle"></i>
+             <p>Pending  </p></a>
+          </li>
+        <li class="nav-item"><a class="nav-link " href="{{ route('warehousecategory.rejected') }}">
+            <i class="nav-icon far fa-circle"></i>
+            <p>Rejected  </p></a>
           </li>
         </ul>
       </nav>

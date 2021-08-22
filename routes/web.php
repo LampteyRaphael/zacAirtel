@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('html.index');
 });
 
-Auth::routes();
+Route::get('/home/contact', function () {
+    return  view('html.contact');
+})->name('home.contact');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 
+Auth::routes();

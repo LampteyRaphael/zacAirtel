@@ -11,7 +11,7 @@
             <a class="btn btn-success" data-toggle='modal' data-target='#items' href="{{ url('users/items/create') }}">Create New Category</a>
         </h5>
         <p class="card-text">
-            <table class="table table-condensed table-hover table-responsive-lg">
+            <table class="table table-condensed table-hover table-responsive-lg shadow-lg">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -44,7 +44,7 @@
 {!! Form::open(['method'=>'POST','route'=>'category.store', 'class'=>"modal fade" ,'id'=>"items", 'data-backdrop'=>"static", 'data-keyboard'=>"false", 'tabindex'=>"-1", 'aria-labelledby'=>"staticBackdropLabel", 'aria-hidden'=>"true"]) !!}
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header  bg-dark">
+      <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Add New Item</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

@@ -15,7 +15,7 @@ class BrandsController extends Controller
      */
     public function index()
     {
-          $brands=Brands::where('user_id',auth()->user()->id)->get();
+          $brands=Brands::where('ware_id',auth()->user()->ware_id)->get();
         return view('users::brand.index',compact('brands'));
     }
 
@@ -36,10 +36,11 @@ class BrandsController extends Controller
     public function store(Request $request)
     {
         $brand=new Brands();
-        $brand->name=$request->name;
-        $brand->user_id=auth()->user()->id;
+        $brand['name']=$request->name;
+        $brand['user_id']=auth()->user()->id;
+        $brand['ware_id']=auth()->user()->ware_id;
         $brand->save();
-        return redirect()->back();
+        return redirect()->back()->with('success','Success Saved Brand');
     }
 
     /**

@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-         $category=Category::where('user_id',auth()->user()->id)->get();
+         $category=Category::where('ware_id',auth()->user()->ware_id)->get();
         return view('users::category.index',compact('category'));
     }
 
@@ -38,8 +38,8 @@ class CategoryController extends Controller
         $category=new Category();
         $category->name=$request->name;
         $category->user_id=auth()->user()->id;
+        $category->ware_id=auth()->user()->ware_id;
         $category->save();
-
      if($category){
          return redirect()->back()->with('success','Item Successfully Saved');
      }

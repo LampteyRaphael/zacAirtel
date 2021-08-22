@@ -42,11 +42,11 @@ WareHouse Account Crated By the User
        $ware=new wareHouseRequest();
         $ware->user_id=auth()->user()->id;
         $ware->item_id=$request->item_id;
-        $ware->ware_id=$request->ware_id;
+        $ware->ware_id= auth()->user()->ware_id;
         $ware->quantity=$request->quantity;
         $ware->remark=1;
         $ware->save();
-       return redirect()->back()->with('success','Item Successfully Saved');
+       return redirect()->back()->with('success','Successfully Saved');
     }
 
     /**

@@ -28,4 +28,22 @@
     </div>
 </div>
 
+
+
+ <table class="table item-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Images</th>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
 @endsection

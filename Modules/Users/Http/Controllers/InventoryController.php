@@ -20,7 +20,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-         $inventory=Inventory::where('user_id',auth()->user()->id)->get();
+         $inventory=Inventory::where('ware_house_id',auth()->user()->ware_id)->get();
          $brands=Brands::where('user_id',auth()->user()->id)->pluck('name','id')->all();;
          $categorys=Category::where('user_id',auth()->user()->id)->pluck('name','id')->all();
          $items=Items::where('user_id',auth()->user()->id)->pluck('name','id')->all();
@@ -93,15 +93,15 @@ class InventoryController extends Controller
     {
         try{
             $inv=Inventory::where('id',$id)->where('user_id',auth()->user()->id)->firstOrFail();
-            $inv->brand_id=$request->brand_id;
-            $inv->item_id=$request->item_id;
-            $inv->category_id=$request->category_id;
-            $inv->serial=$request->serial;
-            $inv->status=$request->status;
-            $inv->model=$request->model;
-            $inv->ware_house_id=1;
-            $inv->user_id=auth()->user()->id;
-            $inv->description=$request->description;
+            $inv['brand_id']=$request->brand_id;
+            $inv['item_id']=$request->item_id;
+            $inv['category_id']=$request->category_id;
+            $inv['serial']=$request->serial;
+            $inv['status']=$request->status;
+            $inv['model']=$request->model;
+            $inv['ware_house_id']=1;
+            $inv['user_id']=auth()->user()->id;
+            $inv['description']=$request->description;
             $inv->save();
             return redirect()->back();
         }catch (ModelNotFoundException $exception){

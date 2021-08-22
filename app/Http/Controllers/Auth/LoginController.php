@@ -37,4 +37,26 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function authenticated($request)
+    {
+        if (auth()->check()) {
+
+            if (auth()->user()->isUser()) {
+
+                return redirect()->route('users.index')->with(['success' => 'Welcome Mechant']);
+
+            } elseif (auth()->user()->isAdmin()) {
+                return redirect()->route('merchant.index')->with(['success' => 'Welcome Super Admin']);
+                }else{
+                    return redirect()->route('login')->with('error','Email-Address And Password Are Wrong.');
+                }
+
+        } else{
+            return redirect()->route('login')->with('error','Email-Address And Password Are Wrong.');
+        }
+    }
+
+
 }

@@ -17,16 +17,16 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-  @include('partials.header')
+  @include('merchant::partials.header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('partials.sidebar')
+  @include('merchant::partials.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-    @include('partials.breadcrumb')
+    @include('merchant::partials.breadcrumb')
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
@@ -34,7 +34,7 @@
     </section>
     <!-- /.content -->
   </div>
-  @include('partials.footer')
+  @include('merchant::partials.footer')
   <!-- /.content-wrapper -->
 
 </div>

@@ -11,7 +11,7 @@
            <b> List Of Ware House</b>
         </h5>
         <h5 class="card-title float-right">
-            <a class="btn btn-success" data-toggle='modal' data-target='#items' href="#">Make Request To Ware House</a>
+            <a class="btn btn-primary" data-toggle='modal' data-target='#items' href="#">Make Request To Ware House</a>
         </h5>
         <p class="card-text">
             <table class="table table-condensed table-hover table-responsive-lg">
@@ -24,7 +24,6 @@
                         <th>Ware House Telephone</th>
                         <th>Ware House Email</th>
                         <th>Created At</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

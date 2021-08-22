@@ -6,23 +6,24 @@
 @section('content')
 <?php $i=1;?>
 <div class="card">
-    <div class="card-body">
+    <div class="card-body ">
         <h5 class="card-title float-right">
             <a class="btn btn-success" data-toggle='modal' data-target='#items' href="{{ url('users/items/create') }}">Create New Item</a>
         </h5>
         <p class="card-text">
-            <table class="table table-condensed table-hover table-responsive-lg">
+            <table class="table table-condensed table-hover table-responsive-lg shadow-lg">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Item</th>
                         <th>Brands </th>
                         <th>Categories</th>
+                        <th>Qty</th>
                         <th>Serial</th>
                         <th>Model</th>
                         <th>Description</th>
                         <th>Status</th>
-                        <th>User</th>
+                        <th>Unit Price</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -34,11 +35,12 @@
                         <td>{{ $value->item->name??''}}</td>
                         <td>{{ $value->brand->name??''}}</td>
                         <td>{{ $value->category->name??''}}</td>
+                        <td>{{ $value->qty??''}}</td>
                         <td><span class="badge badge-pill badge-warning">{{ $value->serial??''}}</span></td>
                         <td><span class="badge badge-pill badge-danger">{{ $value->model}}</span></td>
                         <td>{{ $value->description??''}}</td>
                         <td><span class="badge badge-pill badge-success">{{ $value->status0->name??''}}</span></td>
-                        <td>{{ $value->user->name??''}}</td>
+                        <td>{{ $value->item_unit_price??''}}</td>
                         <td>{{ $value->created_at??''}}</td>
                         <td>
                             <a href="{{ route('user-inventory.edit',$value->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>

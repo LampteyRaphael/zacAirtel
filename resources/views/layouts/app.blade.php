@@ -26,7 +26,6 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-    @include('partials.breadcrumb')
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->

@@ -15,7 +15,7 @@ class ItemsRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'user_id'=>'requird'
+            'user_id'=>'requird',
         ];
     }
 

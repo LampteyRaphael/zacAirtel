@@ -18,10 +18,12 @@ use Modules\Users\Http\Controllers\InventoryController;
 use Modules\Users\Http\Controllers\ItemsController;
 use Modules\Users\Http\Controllers\WareHouseController;
 use Modules\Users\Http\Controllers\WareHouseRequestController;
+use Modules\Users\Http\Controllers\PointOfSaleController;
 
  Route::middleware(['auth','userAdmin'])->group(function () {
     Route::prefix('Users')->group(function() {
-        Route::get('/', 'UsersController@index');
+        Route::get('/', 'UsersController@index')->name('users.index');
+        Route::get('/create', 'UsersController@create')->name('users.create');
         Route::get('/ware-house', [WareHouseController::class,'index'])->name('warehouse.index');
         Route::post('/ware-house', [WareHouseController::class,'store'])->name('warehouse.store');
 
@@ -30,6 +32,7 @@ use Modules\Users\Http\Controllers\WareHouseRequestController;
         Route::get('/items', [ItemsController::class,'index'])->name('item.index');
         Route::get('/items/create', [ItemsController::class,'create'])->name('item.create');
         Route::post('/items', [ItemsController::class,'store'])->name('item.store');
+        Route::get('/items/{id}', [ItemsController::class,'destroy'])->name('item.destroy');
         Route::get('/category', [CategoryController::class,'index'])->name('category.index');
         Route::post('/category', [CategoryController::class,'store'])->name('category.store');
 
@@ -45,6 +48,11 @@ use Modules\Users\Http\Controllers\WareHouseRequestController;
         Route::get('/wareHouseRequest/{id}/pending',[WareHouseRequestController::class,'show'])->name('wareHouseRequest.show');
         Route::post('/wareHouseRequest/{id}',[WareHouseRequestController::class,'update'])->name('wareHouseRequest.update');
         Route::get('/wareHouseRequest/{id}',[WareHouseRequestController::class,'destroy'])->name('wareHouseRequest.destroy');
+        Route::get('/userpointofsale',[PointOfSaleController::class,'index'])->name('userpointofsale.index');
+        Route::post('/userpointofsale',[PointOfSaleController::class,'store'])->name('userpointofsale.store');
+
+
+
 
     });
  });

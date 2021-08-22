@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-      <img src="assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img src="assets/img/AdminLTELogo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">EDA INVETORY</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,7 +13,7 @@
           <img src="assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">phpflow</a>
+          <a href="#" class="d-block">{{ auth()->user()->name??'' }}</a>
         </div>
       </div>
 
@@ -36,44 +36,83 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="{{ route('/users/ware-house') }}" class="nav-link {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}" class="nav-link {{ $elementActive ?? '' == 'home' ? 'active' : '' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
-                 home
+                  Dashboard
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
+            <a href="{{ route('user-inventory.index') }}" class="nav-link  {{ $elementActive ?? '' == 'brands' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
               <p>
-                Contact us
+                 Inventory
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
+            <a href="{{ route('brands.index') }}" class="nav-link  {{ $elementActive ?? '' == 'brands' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
               <p>
-                Dashboard
+                 Brands
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
+            <a href="{{ route('item.index') }}" class="nav-link  {{ $elementActive ?? '' == 'items' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
               <p>
-                Dashboard
+                 Items
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/contact" class="nav-link  {{ $elementActive ?? '' == 'dashboard' ? 'active' : '' }}">
+            <a href="{{ route('category.index') }}" class="nav-link  {{ $elementActive ?? '' == 'category' ? 'active' : '' }}">
             <i class="nav-icon fas fa-id-card-alt"></i>
               <p>
-                Dashboard
+                 Category
               </p>
             </a>
+          </li>
+          <ul class="nav nav-treeview">
+            <li class="nav-item active"><a class="nav-link active" href="/project1/backend/web/index.php?r=site%2Findex"><i class="nav-icon far fa-circle"></i> <p>Active Page  </p></a></li>
+            <li class="nav-item"><a class="nav-link " href="#"><i class="nav-icon far fa-circle"></i> <p>Inactive Page  </p></a></li>
+          </ul>
+
+          <li class="nav-header text-uppercase">Ware House</li>
+          <li class="nav-item">
+              <a class="nav-link {{ $elementActive ?? '' == 'warehouse' ? 'active' : '' }} " href="{{ route('warehouse.index') }}">
+                  <i class="nav-icon fas fa-home"></i>
+                  <p>WareHouse</p>
+                </a>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link {{ $elementActive ?? '' == 'wareHouseRequest' ? 'active' : '' }}" href="{{ route('wareHouseRequest.index') }}">
+              <i class="nav-icon far fa-circle"></i> <p>Approved</p>
+            </a>
+            </li>
+          <li class="nav-item"><a class="nav-link {{ $elementActive ?? '' == 'wareHouseRequestCreate' ? 'active' : '' }}" href="{{ route('wareHouseRequest.create') }}">
+              <i class="nav-icon far fa-circle"></i>
+               <p>Pending  </p></a>
+            </li>
+          <li class="nav-item"><a class="nav-link " href="{{ route('wareHouseRequest.reject') }}">
+              <i class="nav-icon far fa-circle"></i>
+              <p>Rejected  </p></a>
+            </li>
+          <li class="nav-header text-uppercase">Sales Point</li>
+          <li class="nav-item">
+            <a href="{{ route('userpointofsale.index') }}" class="nav-link  {{ $elementActive ?? '' == 'contact' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-id-card-alt"></i>
+              <p>
+                Sales Point
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link " href="#"><i class="nav-icon far fa-circle text-danger"></i> <p>Important  </p></a></li>
+          <li class="nav-item"><a class="nav-link " href="#"><i class="nav-icon far fa-circle text-warning"></i> <p>Warning  </p></a></li>
+          <li class="nav-item"><a class="nav-link " href="#"><i class="nav-icon far fa-circle text-info"></i> <p>Informational  </p></a></li>
           </li>
         </ul>
       </nav>

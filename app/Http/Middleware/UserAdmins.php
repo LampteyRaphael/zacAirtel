@@ -21,9 +21,9 @@ class UserAdmins
             if(auth()->user()->role_id==1){
                 return $next($request);
             }
-            return redirect()->guest('login');
+           // return redirect()->guest('login');
         }
-        return redirect()->guest('login');
+        return redirect()->back();
 
     }
 }

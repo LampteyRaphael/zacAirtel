@@ -26,7 +26,7 @@ class WareHouseRequestController extends Controller
      */
     public function index()
     {
-         $wareHouseRequest=wareHouseRequest::where('user_id',$this->userID())->where('remark',2)->get();
+         $wareHouseRequest=wareHouseRequest::where('ware_id','=',auth()->user()->ware_id)->where('remark',2)->get();
         return view('users::wareHouseRequest.approved',compact('wareHouseRequest'));
     }
 
@@ -36,7 +36,7 @@ class WareHouseRequestController extends Controller
      */
     public function create()
     {
-        $wareHouseRequest=wareHouseRequest::where('user_id',$this->userID())->where('remark',1)->get();
+        $wareHouseRequest=wareHouseRequest::where('ware_id','=',auth()->user()->ware_id)->where('remark',1)->get();
 
         return view('users::wareHouseRequest.pending',compact('wareHouseRequest'));
     }
@@ -97,11 +97,11 @@ class WareHouseRequestController extends Controller
             $ware=wareHouseRequest::where('id',$id)->where('user_id',$this->userID())->firstOrFail();
             $ware->user_id=auth()->user()->id;
             $ware->item_id=$request->item_id;
-            $ware->ware_id=$request->ware_id;
+            $ware->ware_id= auth()->user()->ware_id;
             $ware->quantity=$request->quantity;
             $ware->remark=1;
             $ware->save();
-            return redirect()->back();
+            return redirect()->back()->with('success','Success Updated');
         }catch (ModelNotFoundException $exception){
             return back()->withError('Ware House Request not found by ID ' . $id)->withInput();
         }
@@ -118,7 +118,7 @@ class WareHouseRequestController extends Controller
         try{
             $ware=wareHouseRequest::where('id',$id)->where('user_id',$this->userID())->firstOrFail();
             $ware->delete();
-            return redirect()->back();
+            return redirect()->back()->with('success','Success Deleted');
         }catch (ModelNotFoundException $exception){
             return back()->withError('Ware House Request not found by ID ' . $id)->withInput();
         }

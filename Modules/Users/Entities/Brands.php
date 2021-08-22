@@ -10,7 +10,7 @@ class Brands extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','user_id'
+        'name','user_id','ware_id'
     ];
 
 protected $table='brand';

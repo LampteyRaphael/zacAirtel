@@ -19,7 +19,9 @@ class Inventory extends Model
     'ware_house_id',
     'description',
     'status',
-    'user_id'
+    'user_id',
+    'item_unit_price',
+    'qty'
     ];
 
 protected $table='inventory';

@@ -21,8 +21,8 @@ class MerchatAdmins
             if(auth()->user()->role_id==2){
                 return $next($request);
             }
-            return redirect()->guest('login');
+            //return redirect()->back();
         }
-        return redirect()->guest('login');
+        return redirect()->back();
     }
 }

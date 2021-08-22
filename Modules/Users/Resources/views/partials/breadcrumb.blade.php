@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Blank Page</h1>
+          <h1><b>Inventory</b></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -10,7 +10,7 @@
 
           @foreach(Request::segments() as $segment)
           <li class="breadcrumb-item">
-              <a href="{{ route('contact') }}">{{$segment}}</a>
+              <a href="{{ route('users.index') }}">{{$segment}}</a>
           </li>
           @endforeach
           </ol>

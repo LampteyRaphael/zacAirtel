@@ -19,9 +19,9 @@ class WareHouse extends Model
         'user_id',
         'ware_house_email'
         ];
-        protected $table ='ware_houses';
+    protected $table ='ware_houses';
 
-        protected $dates=['created_at','updated_at'];
+    protected $dates=['created_at','updated_at'];
 
     protected static function newFactory()
     {

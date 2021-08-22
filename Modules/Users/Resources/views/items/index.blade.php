@@ -11,31 +11,19 @@
             <a class="btn btn-success" data-toggle='modal' data-target='#items' href="{{ url('users/items/create') }}">Create New Item</a>
         </h5>
         <p class="card-text">
-            <table class="table table-condensed table-hover table-responsive-lg">
+            <table class="table item-table">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Item Name</th>
+                        <th>Images</th>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($items as $key => $value)
-                        <tr>
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $value->name}}</td>
-                            <td>{{ $value->created_at->diffForHumans()}}</td>
-                            <td>{{ $value->updated_at->diffForHumans()}}</td>
-
-                            <td>
-                                <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
                 </tbody>
             </table>
         </p>
@@ -43,7 +31,7 @@
 </div>
 
 
-{!! Form::open(['method'=>'POST','action'=>'Modules\Users\Http\Controllers\ItemsController@store', 'class'=>"modal fade" ,'id'=>"items", 'data-backdrop'=>"static", 'data-keyboard'=>"false", 'tabindex'=>"-1", 'aria-labelledby'=>"staticBackdropLabel", 'aria-hidden'=>"true"]) !!}
+{!! Form::open(['method'=>'POST','action'=>'Modules\Users\Http\Controllers\ItemsController@store','files'=>true, 'class'=>"modal fade" ,'id'=>"items", 'data-backdrop'=>"static", 'data-keyboard'=>"false", 'tabindex'=>"-1", 'aria-labelledby'=>"staticBackdropLabel", 'aria-hidden'=>"true"]) !!}
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header  bg-dark">
@@ -54,12 +42,29 @@
       </div>
       <div class="modal-body">
         <p>
-                <div class="row">
+                <div class=" form-group row">
                     <div class="col-md-2">
                     {!! Form::label('name', 'Create New Item', ['class'=>'control-label']) !!}
                     </div>
                     <div class="col-md-8">
                         {!! Form::text('name',null, ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                    {!! Form::label('item_unit_price', 'Item Unit Price', ['class'=>'control-label']) !!}
+                    </div>
+                    <div class="col-md-8">
+                        {!! Form::text('item_unit_price',null, ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                    {!! Form::label('item_image', 'Item Image', ['class'=>'control-label']) !!}
+                    </div>
+                    <div class="col-md-8">
+                        {!! Form::file('item_image',null, ['class'=>'form-control']) !!}
                     </div>
                 </div>
         </p>
@@ -72,4 +77,42 @@
   </div>
   {!! Form::close() !!}
 
+<div id="approveAdmin" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+               <div class="modal-header bg-warning">
+                   <div class="modal-title">Edit User Profile</div>
+                </div>
+            <div class="modal-body">
+                <p>
+                     <div class=" form-group row">
+                    <div class="col-md-2">
+                    {!! Form::label('name', 'Create New Item', ['class'=>'control-label']) !!}
+                    </div>
+                    <div class="col-md-8">
+                        {!! Form::text('name',null, ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                    {!! Form::label('item_unit_price', 'Item Unit Price', ['class'=>'control-label']) !!}
+                    </div>
+                    <div class="col-md-8">
+                        {!! Form::text('item_unit_price',null, ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                    {!! Form::label('item_image', 'Item Image', ['class'=>'control-label']) !!}
+                    </div>
+                    <div class="col-md-8">
+                        {!! Form::file('item_image',null, ['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

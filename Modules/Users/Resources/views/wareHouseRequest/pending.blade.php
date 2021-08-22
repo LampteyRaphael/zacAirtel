@@ -23,7 +23,6 @@
                         <th>remark</th>
                         <th>autOfficer</th>
                         <th>Created At</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,11 +49,6 @@
                         </td>
                         <td>{{ $value->autOfficer}}</td>
                         <td>{{ $value->created_at->diffForHumans()}}</td>
-                        <td>
-                            <a href="{{ route('wareHouseRequest.show',$value->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-
-                            <a href="{{ route('wareHouseRequest.destroy',$value->id) }}" onclick="return confirm('Are you sure you want to delete the request pending?')" class="btn btn-danger"><i class="fa fa-recycle"></i></a>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>
