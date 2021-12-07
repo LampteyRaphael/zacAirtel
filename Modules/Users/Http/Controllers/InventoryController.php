@@ -2,6 +2,7 @@
 
 namespace Modules\Users\Http\Controllers;
 
+use App\DataTables\InventoryDatatables;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -18,14 +19,18 @@ class InventoryController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(InventoryDatatables $dataTable )
     {
-         $inventory=Inventory::where('ware_house_id',auth()->user()->ware_id)->get();
-         $brands=Brands::where('user_id',auth()->user()->id)->pluck('name','id')->all();;
-         $categorys=Category::where('user_id',auth()->user()->id)->pluck('name','id')->all();
-         $items=Items::where('user_id',auth()->user()->id)->pluck('name','id')->all();
-         $status=StatusCategory::pluck('name','id')->all();
-        return view('users::inventory.index',compact('inventory','brands','items','categorys','brands','status'));
+         return $dataTable->render('users::inventory.index');
+
+        //  $inventory=Inventory::where('ware_house_id',auth()->user()->ware_id)->get();
+        //  $brands=Brands::where('user_id',auth()->user()->id)->pluck('name','id')->all();;
+        //  $categorys=Category::where('user_id',auth()->user()->id)->pluck('name','id')->all();
+        //  $items=Items::where('user_id',auth()->user()->id)->pluck('name','id')->all();
+        //  $status=StatusCategory::pluck('name','id')->all();
+        // return view('users::inventory.index',compact('inventory','brands','items','categorys','brands','status'));
+
+
     }
 
     /**
@@ -45,17 +50,19 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $inv=new Inventory();
-        $inv->brand_id=$request->brand_id;
-        $inv->item_id=$request->item_id;
-        $inv->category_id=$request->category_id;
-        $inv->serial=$request->serial;
-        $inv->status=$request->status;
-        $inv->model=$request->model;
-        $inv->ware_house_id=1;
-        $inv->user_id=auth()->user()->id;
-        $inv->description=$request->description;
+        $inv['brand_id']=$request->brand_id;
+        $inv['item_id']=$request->item_id;
+        $inv['category_id']=$request->category_id;
+        $inv['serial']=$request->serial;
+        $inv['status']=$request->status;
+        $inv['model']=$request->model;
+        $inv['qty']=$request->qty;
+        $inv['ware_house_id']=auth()->user()->ware_id;
+        $inv['user_id']=auth()->user()->id;
+        $inv['item_unit_price']=$request->item_unit_price;
+        $inv['description']=$request->description;
         $inv->save();
-        return redirect()->back()->with('success','Successfully Save');
+        return redirect()->back()->with(['success'=> 'Successfully Save']);
     }
 
     /**

@@ -45,11 +45,13 @@ class LoginController extends Controller
 
             if (auth()->user()->isUser()) {
 
-                return redirect()->route('users.index')->with(['success' => 'Welcome Mechant']);
+                return redirect()->route('service.index')->with(['success' => 'Welcome User']);
 
             } elseif (auth()->user()->isAdmin()) {
+               
                 return redirect()->route('merchant.index')->with(['success' => 'Welcome Super Admin']);
-                }else{
+               
+            }else{
                     return redirect()->route('login')->with('error','Email-Address And Password Are Wrong.');
                 }
 

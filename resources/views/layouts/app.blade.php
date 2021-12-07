@@ -1,143 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>App Name - @yield('title')</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}" media="all">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
+ <!DOCTYPE html>
+ <html lang="{{ app()->getLocale() }}">
+ <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
-<body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
-  @include('partials.header')
-  <!-- /.navbar -->
+     <!-- CSRF Token -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <!-- Main Sidebar Container -->
-  @include('partials.sidebar')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Default box -->
-      @yield('content')
-    </section>
-    <!-- /.content -->
-  </div>
-  @include('partials.footer')
-  <!-- /.content-wrapper -->
-
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('assets/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('assets/js/demo.js') }}"></script>
-</body>
-</html>
+     <!-- Styles -->
+     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+     <style type="text/css">
+         body{
+             background-image:url('{{asset('/photos/momobanner1.jpg')}}');
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+             height: 100vh;
+             width: 100vw;
+         }
 
 
+        .thumbnail{
+          height:400px;
+        }
 
 
+         .login-page {
+             width: 200px;
+             padding: 8% 0 0;
+             margin: 50px;
+         }
+         .form {
+             position: relative;
+             max-width: 360px;
+             margin: 0 auto 100px;
+             text-align: center;
 
+             /*box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);*/
+         }
+         .form input {
+             font-family: "Roboto", sans-serif;
+             outline: 0;
+             background: #f2f2f2;
+             border: 0;
+             padding:4px;
+             background-color:#ffe92b;
+              width: 100%;
+             margin: 0 0 15px;
+             box-sizing: border-box;
+             font-size: 14px;
+         }
+         .form button {
+             font-family: "Roboto", sans-serif;
+             text-transform: uppercase;
+             outline: 0;
+             background: #4CAF50;
+             width: 100%;
+             border: 0;
 
+             color: #FFFFFF;
+             font-size: 14px;
+             -webkit-transition: all 0.3 ease;
+             transition: all 0.3 ease;
+             cursor: pointer;
+         }
+         .form button:hover,.form button:active,.form button:focus {
+             background: #43A047;
+         }
+         .form .message {
+             margin: 15px 0 0;
+             color: #b3b3b3;
+             font-size: 10px;
+         }
+         .form .message a {
+             color: #4CAF50;
+             text-decoration: none;
+         }
+         .form .register-form {
+             display: none;
+             box-sizing: border-box;
+         }
 
-{{-- <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+     </style>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
-</html> --}}
+ </head>
+ <body>
+    @yield('content')
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+ </body>
+ </html>
 
 

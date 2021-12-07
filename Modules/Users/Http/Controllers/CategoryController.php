@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-         $category=Category::where('ware_id',auth()->user()->ware_id)->get();
+         $category=Category::all();
+        //  where('ware_id',auth()->user()->ware_id)->get();
         return view('users::category.index',compact('category'));
     }
 

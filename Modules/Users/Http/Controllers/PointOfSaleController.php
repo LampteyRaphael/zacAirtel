@@ -18,7 +18,7 @@ class PointOfSaleController extends Controller
      */
     public function index()
     {
-        $pointOfSale=Items::where('wareh_id',auth()->user()->ware_id)->get();
+        $pointOfSale=Items::all();
         $item=$pointOfSale->pluck('name','id');
         $data= pointOfSale::all();
         return view('users::pointOfSale.index',compact('pointOfSale','item','data'));
@@ -58,10 +58,10 @@ class PointOfSaleController extends Controller
             }
 
             $pos=PointOfSale::where('ware_id',auth()->user()->ware_id)->get();
-            
+
             return redirect()->back()->with(['success'=>'Payment Successfully Made','data'=>$pos]);
           } catch (\Throwable $th) {
-
+            return redirect()->back()->with(['error'=>'Payment Not Successfully Made'.$th->getMessage()]);
           }
 
     }

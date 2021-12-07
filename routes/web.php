@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('html.index');
+    return view('auth.login');
 });
 
 Route::get('/home/contact', function () {
